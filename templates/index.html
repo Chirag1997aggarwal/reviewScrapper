@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Review Scrapper</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="container">
+
+          <div class="masthead clearfix">
+            <div class="container inner">
+              <h3 class="masthead-brand">Review Scrapper</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <!-- <li><a href="#">Features</a></li> -->
+                  <!-- <li><a href="#">Contact</a></li> -->
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Go And Get Your Reviews Today</h1>
+            <p class="lead">
+            	Just enter the product name and we will provide you the top reviews releated to that product from best in class E-commerce portals.
+
+        	</p>
+        	<h3 class="cover-heading">Happy Review...</h3>
+            <p class="lead">
+              <!-- <a href="#" class="btn btn-lg "> -->
+              	<center>
+              	<!-- <section id="formSection"> -->
+              		<div class="input-group mb-3 w-75">
+					  <input type="text" class="form-control btn-lg" placeholder="Enter your product name" id='productName' name="productName">
+					  <div class="input-group-append" id="submitSection">
+					    <button class="btn btn-success" id='submit' type="btn">Search</button>
+					    <div class="spinner-grow text-success mt-2" id="spin"></div>
+					    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="showResultBtn">
+            				Your result is ready click here
+  		  				</button>
+					  </div>
+					</div>
+              	<!-- </section> -->
+                </center>
+              <!-- </a> -->
+            </p>
+          </div>
+
+
+
+			<!-- The Modal -->
+		  <div class="modal" id="myModal">
+  			<div class="modal-dialog modal-xl">
+			  <div class="modal-content" style="color:black;">
+      			<div class="modal-header">
+        		  <h4 class="modal-title">Result - </h4>
+    			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+      			</div>
+      			<div class="modal-body" id="resultBody">
+
+
+<div id="accordion" style="text-align: left;">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn font-weight-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <span class="overview"></span>
+      	<table id="review1" class="review table table-hover" style="width:100%">
+      		<thead>
+            <tr>
+                <th>Rating</th>
+                <th>Title</th>
+                <th>Comments</th>
+                <th>Name</th>
+                <th>Up Votes</th>
+                <th>Down Votes</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+      	</table>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn collapsed font-weight-bold" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <span class="overview"></span>
+      	<table id="review2" class="review table table-hover" style="width:100%">
+      		<thead>
+            <tr>
+                <th>Rating</th>
+                <th>Title</th>
+                <th>Comments</th>
+                <th>Name</th>
+                <th>Up Votes</th>
+                <th>Down Votes</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+      	</table>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn collapsed font-weight-bold" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        <span class="overview"></span>
+      	<table id="review3" class="review table table-hover" style="width:100%">
+      		<thead>
+            <tr>
+                <th>Rating</th>
+                <th>Title</th>
+                <th>Comments</th>
+                <th>Name</th>
+                <th>Up Votes</th>
+                <th>Down Votes</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+      	</table>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingFour">
+      <h5 class="mb-0">
+        <button class="btn collapsed font-weight-bold" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+      <div class="card-body">
+        <span class="overview"></span>
+      	<table id="review4" class="review table table-hover" style="width:100%">
+      		<thead>
+            <tr>
+                <th>Rating</th>
+                <th>Title</th>
+                <th>Comments</th>
+                <th>Name</th>
+                <th>Up Votes</th>
+                <th>Down Votes</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+      	</table>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingFive">
+      <h5 class="mb-0">
+        <button class="btn collapsed font-weight-bold" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+      <div class="card-body">
+        <span class="overview"></span>
+      	<table id="review5" class="review table table-hover" style="width:100%">
+      		<thead>
+            <tr>
+                <th>Rating</th>
+                <th>Title</th>
+                <th>Comments</th>
+                <th>Name</th>
+                <th>Up Votes</th>
+                <th>Down Votes</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+      	</table>
+      </div>
+    </div>
+  </div>
+</div>
+
+      			</div>
+      			<div class="modal-footer">
+        		  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      			</div>
+
+			  </div>
+  			</div>
+		  </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
+    <script type="text/javascript">
+    	$('#showResultBtn').hide();
+    	$('#spin').hide();
+    	process = '<div class="spinner-grow text-info"></div>'
+    	// var tbl = $('#review5').DataTable();
+
+    	$('#submit').click(function(){
+    		$('#submit').hide();
+    		$('#spin').show();
+
+    		const data = { productName: $('#productName').val() };
+    		$.post("/searchReview", data,
+    			function(data, status){
+    				data = data['details']
+    				$('#spin').hide();
+    				$("#productName").prop('disabled', true);
+    				$('#showResultBtn').show();
+    				productList = Object.keys(data);
+    				for (var i = productList.length - 1; i >= 0; i--) {
+    					$('#accordion button')[i].innerText = productList[i]
+    					productData = data[productList[i]]
+    					alertType = 'success'
+    					if (parseInt(productData['Over All Rating']) < 3){
+    						alertType = 'danger';
+    					}
+    					alertStr = '<div class="alert alert-'+alertType+' fade show"> '
+    					alertStr += '<button type="button" class="close" data-dismiss="alert">&times;</button>'
+    					alertStr += 'Overall/Average Rating is '+productData["Over All Rating"]+' out of '+productData['Total Reviews & Ratings']
+    					alertStr += ' </div>';
+    					$('#accordion .card-body .overview')[i].innerHTML = alertStr;
+    					for (var j = 0; j < productData['Review List'].length; j++) {
+                colDataList = productData['Review List'][j].map(x=>'<td>'+x+'</td>');
+                row = '<tr>'
+                row += colDataList.reduce((a, b) => a+b)
+                row += '</tr>'
+    						$('#review'+i+' tbody').append(row);
+    					}
+    				}
+    			}
+			);
+    	});
+    </script>
+</body>
+</html>
