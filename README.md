@@ -3,7 +3,7 @@
 ## Why to use reviewScrapper
   If you wants to observe the product quality of an product just use our product.
 
-## How to use revuewScrapper
+## How to use Review Scrapper
  - Visit the deployed portal at https://reviewscrapperpy.herokuapp.com/
  - Provide the product name for which you wants to get reviews as an overview.
  - Click on submit
