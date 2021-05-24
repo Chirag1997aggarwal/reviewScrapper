@@ -15,3 +15,14 @@
 ## Future integrations
  - We will integrate an review summarizer really soon so that no need to look in individual reviews just go for summarized one.
  - We will add some really cool visuallization for overall rating trend for every product come with search.
+
+## Documentation
+ - https://reviewscrapperpy.herokuapp.com/docs/
+ - https://reviewscrapperpy.herokuapp.com/redoc/
+
+## Tech Stack involved
+ - Python, FastAPI
+ - JavaScript, JQuery
+ - Web Scrapping , BS4
+ - HTML5, CSS3, BootStrap4
+ - RestFul API's
