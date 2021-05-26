@@ -8,7 +8,7 @@ def reviewExtractor(s):
     majorData = dict()
     r = requests.get('https://www.flipkart.com/search?q='+s)
     content = r.content
-    wholeData = BeautifulSoup(content)
+    wholeData = BeautifulSoup(content, "html.parser")
     subDataList = wholeData.findAll('a', attrs={'class':'_1fQZEK'})
     if len(subDataList) == 0:
         subDataList = wholeData.findAll('a', attrs={'class':'s1Q9rs'})
@@ -21,7 +21,7 @@ def reviewExtractor(s):
             productLink = link.attrs['href']
             r = requests.get('https://www.flipkart.com'+productLink)
             content = r.content
-            soup = BeautifulSoup(content)
+            soup = BeautifulSoup(content, "html.parser")
             productName = soup.find('span', attrs={'class':'B_NuCI'}).text
             productPrice = soup.find('div', attrs={'class':'_30jeq3 _16Jk6d'}).text
             overAllRating = soup.find('div', attrs={'class':'_2d4LTz'}).text
