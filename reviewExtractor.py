@@ -14,7 +14,7 @@ def reviewExtractor(s):
         subDataList = wholeData.findAll('a', attrs={'class':'s1Q9rs'})
     for link in subDataList:
         x += 1
-        # print(x)
+        print(x)
         if x>5:
             break
         try:
@@ -22,6 +22,7 @@ def reviewExtractor(s):
             r = requests.get('https://www.flipkart.com'+productLink)
             content = r.content
             soup = BeautifulSoup(content, "html.parser")
+            print('B'*10)
             productName = soup.find('span', attrs={'class':'B_NuCI'}).text
             productPrice = soup.find('div', attrs={'class':'_30jeq3 _16Jk6d'}).text
             overAllRating = soup.find('div', attrs={'class':'_2d4LTz'}).text

@@ -23,5 +23,5 @@ async def searchReview(productName:str=Form(...)):
 	And extract the details releated to that keyword with the help of reviewExtractor.
 	'''
 	print(productName)
-	data = reviewExtractor(productName)
+	data = reviewExtractor(productName.replace(' ', ''))
 	return {'details':data}
