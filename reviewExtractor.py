@@ -31,7 +31,10 @@ def reviewExtractor(s):
             reviewSection = soup.find('div', attrs={'class':'_2c2kV-'})
             reviewList = list()
             for i in soup.findAll('div', attrs={'class':'_2wzgFH'}):
-                rating = i.find('div', attrs={'class':'_3LWZlK _1BLPMq'}).text
+                try:
+                    rating = i.find('div', attrs={'class':'_3LWZlK _1BLPMq'}).text
+                except:
+                    rating = i.div.div.text
                 title = i.find('p', attrs={'class':'_2-N8zT'}).text
                 comment = i.find('div', attrs={'class':'t-ZTKy'}).text
                 name = i.find('p', attrs={'class':'_2sc7ZR _2V5EHH'}).text
@@ -50,3 +53,24 @@ def reviewExtractor(s):
 
     return majorData
     #     break
+
+def get_links_flipkart(s, n):
+    base_url = r'https://www.flipkart.com'
+    r = requests.get('https://www.flipkart.com/search?q='+s)
+    content = r.content
+    soup = BeautifulSoup(content,  "html.parser")
+
+    link = soup.findAll('a', attrs={'class':'_1fQZEK'})
+    links = list(map(lambda x: base_url + x.attrs['href'], link))
+    for i in range(0, len(links), n):
+        print(i, i+n)
+        yield links[i:i+n]
+    return len(list(map(lambda x: base_url + x.attrs['href'], link)))
+links = get_links_flipkart('note9pro', 5)
+# print(links)
+
+for i in links:
+    print(len(i))
+# links
+# print(__dir__())
+# print(next(links))
