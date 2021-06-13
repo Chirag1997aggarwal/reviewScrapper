@@ -17,7 +17,7 @@
  - Run <b>docker build -t reviewScrapper . </b>.
  - Above command will add an docker image to your local named as reviewScrapper. You can change the name as required.
  - Run the docker container using the image created in earlier step via </br>
-   <b> docker container run --publish 8000:8000 --name reviewScarpper reviewScrapper </b>
+   <b> docker container run --publish 8000:8000 --name reviewScrapper reviewScrapper </b>
  - Now, you can access the tool on <b> http://localhost:8000/ </b>.
 
 
