@@ -16,8 +16,9 @@
  - Open CMD/terminal/powershell and navigate to the root location of the repo... where Dockerfile is available.
  - Run <b>docker build -t reviewScrapper . </b>.
  - Above command will add an docker image to your local named as reviewScrapper. You can change the name as required.
- - Run the docker container using the image created in earlier step via <b> docker container run --publish 8000:8000 --name reviewScarpper reviewScrapper </b>
- - Now, you can access the tool on <b> http://localhost:8000 </b>.
+ - Run the docker container using the image created in earlier step via 
+   <b> docker container run --publish 8000:8000 --name reviewScarpper reviewScrapper </b>
+ - Now, you can access the tool on <b> http://localhost:8000/ </b>.
 
 
 ## Future integrations
@@ -34,3 +35,4 @@
  - Web Scrapping , BS4
  - HTML5, CSS3, BootStrap4
  - RestFul API's
+ - Docker
